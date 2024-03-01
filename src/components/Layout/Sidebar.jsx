@@ -46,7 +46,7 @@ const Sidebar = () => {
           className={"py-4 px-6 cursor-pointer  " + (selectedItem === 'Menu' ? 'bg-gray-700' : '')}
           onClick={() => handleClick('Menu')}
         >
-          <Link to="/menu">Menu</Link>
+          <Link to="/owner/menu">Menu</Link>
         </li>
       </ul>
       <Link to="/logout">

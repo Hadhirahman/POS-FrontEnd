@@ -1,4 +1,6 @@
+// eslint-disable-next-line react/prop-types
 const TableCard = ({ tableData }) => {
+    // eslint-disable-next-line react/prop-types
     const { id, capacity, occupied, waiterName } = tableData;
   
     const statusColor = occupied ? 'bg-red-300' : 'bg-green-300';

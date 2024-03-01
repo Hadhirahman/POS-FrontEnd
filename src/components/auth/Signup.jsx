@@ -3,12 +3,19 @@
 import { useState } from 'react';
 import Bg from "../../assets/signup login img/image.jpg";
 import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+// import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { setToken } from '../../redux/tokenSlice';
+import instance from '../../api/axios';
+
+
+
+
 
 
 function SignupForm() {
   const navigate=useNavigate()
-
+  const dispatch=useDispatch()
 
   const [formData, setFormData] = useState({
     restaurantName: '',
@@ -96,50 +103,64 @@ function SignupForm() {
 
 
   const handleSendOTP = async () => {
-
-   axios.post('http://localhost:5000/send-otp',{contact:formData.contact})
-   .then(response=>{
-    console.log("response",response.data);
-    if (response.data.status===200) {
-      setFormData(prevState=>({
-        ...prevState,
-        otpSent:true
-      }))
-      console.log("Request successful");
-   } else {
-      console.log("Request failed with status:", response.data.status);
-   }
-   })
-  }
+    try {
+      const response = await instance.post('/send-otp', { contact: formData.contact });
+      console.log("response", response.data);
+      
+      if (response.data.status === 200) {
+        setFormData(prevState => ({
+          ...prevState,
+          otpSent: true
+        }));
+       setOtperror(response.data.message)
+        
+      } else {
+        setOtperror(response.data.message);
+      }
+    } catch (error) {
+      console.error("Request failed:", error);
+      setOtperror(error.response.data.message)
+      // Handle error here, such as displaying an error message to the user
+    }
+  };
+  
       
     
-  const varifyOtp = async () => {
-    const joinotp = formData.otp.join("")
+  const varifyOtp= async (e) => {
+    e.preventDefault();
+    try {
+        const joinotp = formData.otp.join("");
+        const response = await instance.post("/verifyOtp", { otp: joinotp, contact: formData.contact });
+        
+        if (response.data.status === 200) {
+            setFormData(prevState => ({
+                ...prevState,
+                otpVerified: true,
+                otpSent: false
+            }));
+            setOtperror("OTP verified successfully");
+            console.log("Request successful");
+        } else {
+            setOtperror("OTP does not match");
+            console.log("Request failed with status:", response.status);
+        }
+    } catch (error) {
+        setOtperror("Failed to verify OTP");
+        console.error("Error verifying OTP:", error);
+    }
+};
 
-    axios.post("http://localhost:5000/varifyOtp", { otp: joinotp, contact: formData.contact })
-      .then(response => {
-        if (response.data.status===200) {
-          setFormData(prevState=>({
-            ...prevState,
-            otpVerified:true,
-            otpSent:false
-          }))
-          setOtperror("Otp varified successfully")
-          console.log("Request successful");
-       } else {
-          setOtperror("OTP NOT MATCH")
-          console.log("Request failed with status:", response.status);
-       }
-      })
-     }
 
 
 
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/signup', formData);
+      const response = await instance.post('/signup', formData);
       console.log('Signup successful:', response.data)
+      const { token } = response.data;
+      localStorage.setItem('token', token);
+      dispatch(setToken(token))
       navigate("/owner")
     }catch(error){
       if(error.response && error.response.data && error.response.data.message){
@@ -213,7 +234,7 @@ function SignupForm() {
 
 
           {formData.otpVerified && <button type="submit"  className="w-full mb-4 p-2 bg-cyan-300 text-xl rounded-2xl shadow-xl">Signup</button>}
-          {errorBackend && <p className='className="text-red-500 mb-2'>{errorBackend}</p>} {/* Display backend error message if exists */}
+          {errorBackend && <p className='className="text-red-500 mb-2'>{errorBackend}</p>} 
 
         </form>
         <Link to="/login" className="text-blue-500">Login</Link>

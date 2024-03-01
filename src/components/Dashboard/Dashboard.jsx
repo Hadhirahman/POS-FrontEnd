@@ -2,7 +2,7 @@
 
 function Dashboard() {
   return (
-    <div className="  justify-center  bg-red-300  w-7/12  rounded-lg" >
+    <div className="  justify-center   w-7/12  rounded-lg" >
 <div className="flex flex-col justify-items-start bg-white w-full h-full p-4">
   <div className="flex justify-between w-full mb-4">
     <h1 className="text-2xl font-bold text-gray-800">Restaurant Name</h1>

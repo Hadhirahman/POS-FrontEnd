@@ -1,10 +1,10 @@
 
-import Header from '../components/Layout/Header'
-import Sidebar from '../components/Layout/Sidebar'
+import Header from '../../components/Layout/Header'
+import Sidebar from '../../components/Layout/Sidebar'
 
-import Orderlistcontent from '../components/Layout/Orderlistcontent'
-import Footer from '../components/Layout/Footer'
-import Menuform from '../components/Menu/Menuform'
+import Orderlistcontent from '../../components/Layout/Orderlistcontent'
+import Footer from '../../components/Layout/Footer'
+import Menuform from '../../components/Menu/Menuform'
 function Menupage() {
   return (
     <div>

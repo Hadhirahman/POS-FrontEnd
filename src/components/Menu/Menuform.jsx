@@ -1,8 +1,13 @@
 import{ useState } from 'react';
 // import axios from 'axios';
 import instance from '../../api/axios';
+import { useNavigate } from 'react-router-dom';
 
 function Menuform() {
+ 
+const navigate=useNavigate()
+
+   const [message,setMessage]=useState("")   
   const [itemName, setItemName] = useState('');
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
@@ -12,12 +17,14 @@ function Menuform() {
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
+    
     setImage(file);
     const reader = new FileReader();
     reader.onload = () => {
       setImagePreview(reader.result);
     };
     reader.readAsDataURL(file);
+   
   };
 
   const handleSubmit = async (e) => {
@@ -28,6 +35,7 @@ function Menuform() {
     formData.append('price', price);
     formData.append('category', category);
     formData.append('image', image);
+   console.log(formData);
 
     try {
       const response = await instance.post('/menuitemsadd', formData, {
@@ -35,11 +43,13 @@ function Menuform() {
           'Content-Type': 'multipart/form-data'
         }
       });
-      console.log(response.data);
-      // Handle successful form submission, e.g., show success message
+      console.log(response.data.message);
+      setMessage(response.data.message)
+navigate("/owner/productlist")
+    
     } catch (error) {
       console.error('Error submitting form:', error);
-      // Handle error, e.g., show error message to user
+      setMessage(error.response.data.message)
     }
   };
 
@@ -75,11 +85,12 @@ function Menuform() {
 
         <div className="mb-4">
           <label htmlFor="image" className="block text-sm font-medium text-gray-700">Upload Image:</label>
-          <input type="file" id="image" onChange={handleImageChange} accept="image/*" className="mt-1 p-2 w-full border border-gray-300 rounded-md" />
+          <input type="file" id="image" name="file" onChange={handleImageChange} accept="image/*" className="mt-1 p-2 w-full border border-gray-300 rounded-md" />
           {imagePreview && <img src={imagePreview} alt="Preview" className="mt-2 max-w-xs" />}
         </div>
 
         <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">Add Item</button>
+        <p>{message}</p>
       </form>
     </div>
   );

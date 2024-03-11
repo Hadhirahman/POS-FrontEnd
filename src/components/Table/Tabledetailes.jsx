@@ -1,69 +1,69 @@
-// eslint-disable-next-line react/prop-types
+/* eslint-disable no-unused-vars */
+import React from 'react';
+
 const TableCard = ({ tableData }) => {
-    // eslint-disable-next-line react/prop-types
-    const { id, capacity, occupied, waiterName } = tableData;
-  
-    const statusColor = occupied ? 'bg-red-300' : 'bg-green-300';
-    const statusText = occupied ? 'Occupied' : 'Available';
-  
-    return (
-        
-      <div className={`bg-gray-300 rounded-lg shadow-md p-4 flex flex-col items-center gap-2`}>
-        <h3 className="text-xl font-bold text-gray-800">Table {id}</h3>
-        <div className={`flex items-center justify-between text-gray-600 w-full`}>
-          <span className={statusColor}>{statusText}</span>
-          <span>Capacity: {capacity}</span>
+  const { id, capacity, occupied, waiterName } = tableData;
+
+  const statusColor = occupied ? 'bg-red-500' : 'bg-green-500';
+  const statusText = occupied ? 'Occupied' : 'Available';
+
+  return (
+    <div className="bg-gray-800 text-white rounded-lg shadow-md p-6 flex flex-col justify-between h-full">
+      <div>
+        <h3 className="text-lg font-semibold mb-2">Table {id}</h3>
+        <div className="flex justify-between items-center mb-2">
+          <span className={`px-3 py-1 rounded-full ${statusColor} text-sm`}>{statusText}</span>
+          <span className="text-sm">Capacity: {capacity}</span>
         </div>
         {occupied && (
-          <p className="text-gray-600">Waiter: {waiterName}</p>
+          <p className="text-sm mb-2">Waiter: {waiterName}</p>
         )}
-        <div className="flex justify-between mt-4">
-          <button
-            className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded"
-            disabled
-          >
-            Delete
-          </button>
-          <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded"
-            disabled
-          >
-            Edit
-          </button>
-        </div>
       </div>
-    );
-  };
-  
-  const TableManagement = () => {
-    return (
-        <div className="  justify-center  bg-white  w-7/12  rounded-lg" >
-         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-      <TableCard
-        tableData={{
-          id: 1,
-          capacity: 4,
-          occupied: true,
-          waiterName: 'John Doe',
-        }}
-      />
-      <TableCard
-        tableData={{
-          id: 2,
-          capacity: 6,
-          occupied: false,
-          waiterName: null,
-        }}
-      />
-      {/* ... add more TableCard components ... */}
-      {/* Add button to create a new table */}
-      <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+      <div className="flex justify-end">
+        <button
+          className="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded mr-2 disabled:opacity-50"
+          disabled
+        >
+          Delete
+        </button>
+        <button
+          className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded disabled:opacity-50"
+          disabled
+        >
+          Edit
+        </button>
+      </div>
+    </div>
+  );
+};
+
+const TableManagement = () => {
+  return (
+    <div className="flex flex-col bg-gray-900 min-h-screen py-8 w-full md:w-7/12 mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <TableCard
+          tableData={{
+            id: 1,
+            capacity: 4,
+            occupied: true,
+            waiterName: 'John Doe',
+          }}
+        />
+        <TableCard
+          tableData={{
+            id: 2,
+            capacity: 6,
+            occupied: false,
+            waiterName: null,
+          }}
+        />
+        {/* Add more TableCard components here */}
+      </div>
+      <button className="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 mt-6 rounded w-full md:w-2/5 mx-auto">
         Add Table
       </button>
     </div>
-      </div>
-    );
-  };
-  
-  export default TableManagement;
-  
+  );
+};
+
+export default TableManagement;

@@ -13,9 +13,9 @@ function Orderpage() {
                 <Header />
                 <div className='flex gap-4 '>
                     <Sidebar />
-                    <div className="flex flex-wrap justify-center bg-red-300  w-7/12">
+                    
                         <OrderList />
-                    </div>
+                    
                     <Orderlistcontent />
 
                 </div>

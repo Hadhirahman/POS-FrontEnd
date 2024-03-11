@@ -6,7 +6,8 @@ import Orderpage from '../pages/Orderpage'
 import Tablemanagementpage from '../pages/Tablemanagement'
 import Staffpage from '../pages/staff/Staffpage'
 import StaffAddandUpdate from '../pages/staff/StaffAddandUpdate'
-import Menupage from '../pages/Menupage'
+import Menupage from '../pages/menu/Menupage'
+import MenulistPage from '../pages/menu/MenulistPage'
 
 function Owner() {
   return (
@@ -18,7 +19,8 @@ function Owner() {
       <Route path='/staff' element={<Staffpage/>}/>
       <Route path='/staffdetaies' element={<StaffAddandUpdate/>}/>
       <Route path='/staffdetaies/:id' element={<StaffAddandUpdate/>}/>
-      <Route path='/menu' element={<Menupage/>}/>
+      <Route path='/productlist' element={<MenulistPage/>}/>
+      <Route path='/productadd' element={<Menupage/>}/>
       {/* <Route path='/orderlist' element={<Staffpage/>}/> */}
 
       </Routes>

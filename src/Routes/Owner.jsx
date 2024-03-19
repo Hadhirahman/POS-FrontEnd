@@ -21,6 +21,7 @@ function Owner() {
       <Route path='/staffdetaies/:id' element={<StaffAddandUpdate/>}/>
       <Route path='/productlist' element={<MenulistPage/>}/>
       <Route path='/productadd' element={<Menupage/>}/>
+      <Route path='/productedit/:id' element={<Menupage/>}/>
       {/* <Route path='/orderlist' element={<Staffpage/>}/> */}
 
       </Routes>

@@ -15,7 +15,7 @@ function MainHome() {
           
              <Dashboard/>
               
-                <Orderlistcontent/>
+              
 
             </div>
             <Footer/>

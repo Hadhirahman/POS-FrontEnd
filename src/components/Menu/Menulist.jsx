@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import { toast } from 'react-toastify';
@@ -7,6 +7,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import instance from '../../api/axios';
 
 function Menulist() {
+  const navigate=useNavigate()
+ 
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [products, setProducts] = useState([]);
   const [clickedCardId, setClickedCardId] = useState(null);
@@ -25,8 +27,9 @@ function Menulist() {
     setSelectedCategory(category);
   };
 
-  const handleEditProduct = (productId) => {
-    // Implement edit product functionality
+  const handleEditProduct = (Id) => {
+    navigate(`/owner/productedit/${Id}`)
+    
   };
 
   const handleDeleteProduct = async (productId) => {
@@ -81,11 +84,11 @@ function Menulist() {
                 <img className="rounded-lg h-40 w-full object-cover mb-2" src={product.imageUrl} alt={product.itemName} />
                 <div className="flex justify-between items-center">
                   <div>
-                    <h1 className="text-md font-semibold">{product.itemName}</h1>
-                    <p className="text-sm font-semibold text-green-500">${product.price}</p>
+                    <h1 className="text-md font-semibold text-black">{product.itemName}</h1>
+                    <p className="text-sm font-semibold text-green-500">₹{product.price}</p>
 
                   </div>
-                  <button className="bg-blue-500 text-white py-1 px-2 sm:px-3 rounded-lg shadow-md hover:shadow-lg transition duration-500 transform-gpu hover:scale-110 text-xs sm:text-sm">Add to Cart</button>
+                  <button className="bg-blue-500 text-white py-1 px-2 sm:px-3 rounded-lg shadow-md hover:shadow-lg transition duration-500 transform-gpu hover:scale-110 text-xs sm:text-sm" style={{ width: '80px', height: '30px' }}>Add to</button>
                 </div>
               </div>
             ))

@@ -1,6 +1,5 @@
 
 import Footer from "../../components/Layout/Footer"
-import Orderlistcontent from "../../components/Layout/Orderlistcontent"
 import Sidebar from "../../components/Layout/Sidebar"
 import StaffList from "../../components/Staff/StaffList"
 
@@ -17,8 +16,6 @@ function Staffpage() {
                 <Sidebar/>
           
                 <StaffList/>
-              
-                <Orderlistcontent/>
 
             </div>
             <Footer/>

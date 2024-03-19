@@ -3,7 +3,7 @@ import Header from '../../components/user/Heeader/Header'
 import Sidebar from '../../components/Layout/Sidebar'
 
 import StaffForm from '../../components/Staff/StaffDEtailes'
-import Orderlistcontent from '../../components/Layout/Orderlistcontent'
+
 import Footer from '../../components/Layout/Footer'
 
 function StaffAddandUpdate() {
@@ -16,7 +16,7 @@ function StaffAddandUpdate() {
           
                 <StaffForm/>
               
-                <Orderlistcontent/>
+               
 
             </div>
             <Footer/>

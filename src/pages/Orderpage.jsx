@@ -2,7 +2,7 @@
 import Header from '../components/Layout/Header'
 import Sidebar from '../components/Layout/Sidebar'
 import OrderList from '../components/Order/Orderlist'
-import Orderlistcontent from '../components/Layout/Orderlistcontent'
+// import Orderlistcontent from '../components/Layout/Orderlistcontent'
 import Footer from '../components/Layout/Footer'
 
 function Orderpage() {
@@ -16,7 +16,7 @@ function Orderpage() {
                     
                         <OrderList />
                     
-                    <Orderlistcontent />
+                  
 
                 </div>
                 <Footer/>

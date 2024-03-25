@@ -1,10 +1,15 @@
 // store.js
 import { configureStore } from '@reduxjs/toolkit';
-import tokenReducer from './tokenSlice';
+
+import tableSlice from './tableSlice';
+import staffSlice from './staffSlice';
+import tokenSlice from './tokenSlice';
 
 export default configureStore({
   reducer: {
-    token: tokenReducer,
-    // Other reducers...
+    token: tokenSlice,
+    tables: tableSlice,
+    stafflist:staffSlice
+
   },
 });

@@ -3,11 +3,12 @@ import { Route, Routes } from 'react-router-dom'
 import MainHome from '../pages/MainHome'
 
 import Orderpage from '../pages/Orderpage'
-import Tablemanagementpage from '../pages/Tablemanagement'
+import Tablemanagementpage from '../pages/Table/Tablemanagement'
 import Staffpage from '../pages/staff/Staffpage'
 import StaffAddandUpdate from '../pages/staff/StaffAddandUpdate'
 import Menupage from '../pages/menu/Menupage'
 import MenulistPage from '../pages/menu/MenulistPage'
+
 
 function Owner() {
   return (
@@ -22,7 +23,8 @@ function Owner() {
       <Route path='/productlist' element={<MenulistPage/>}/>
       <Route path='/productadd' element={<Menupage/>}/>
       <Route path='/productedit/:id' element={<Menupage/>}/>
-      {/* <Route path='/orderlist' element={<Staffpage/>}/> */}
+      
+     
 
       </Routes>
     </>

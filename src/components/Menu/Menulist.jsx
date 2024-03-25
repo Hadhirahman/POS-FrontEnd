@@ -56,7 +56,7 @@ function Menulist() {
   categories.unshift('all');
 
   return (
-    <div className="bg-black text-white min-h-screen py-8 px-4 sm:px-6 lg:px-8 flex justify-center md:w-7/12 rounded-lg">
+    <div className="bg-white text-white min-h-screen py-8 px-4 sm:px-6 lg:px-8 flex justify-center md:w-7/12 rounded-lg">
       <div className="max-w-4xl mx-auto">
         <Link to="/owner/productadd" className="bg-green-500 text-white py-2 px-4 rounded-lg mb-4 inline-block">Add Menu Item</Link>
         <div className="mb-4 flex flex-wrap">
@@ -67,7 +67,7 @@ function Menulist() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {filteredProducts.length > 0 ? (
             filteredProducts.map(product => (
-              <div key={product._id} className="bg-white p-3 rounded-lg shadow-md hover:shadow-lg transition duration-300 relative">
+              <div key={product._id} className="bg-cyan-100 p-3 rounded-lg shadow-md hover:shadow-lg transition duration-300 relative">
                 <div className="absolute top-0 right-0 mt-2 mr-2">
                   <div className="relative">
                     <button className="text-gray-600 hover:text-gray-800 focus:outline-none" onClick={() => toggleOptions(product._id)}>

@@ -1,10 +1,11 @@
 
-import Footer from "../components/Layout/Footer"
-import Orderlistcontent from "../components/Layout/Orderlistcontent"
-import Sidebar from "../components/Layout/Sidebar"
-import Tabledetailes from "../components/Table/Tabledetailes"
+import Footer from "../../components/Layout/Footer"
+import Orderlistcontent from "../../components/Layout/Orderlistcontent"
+import Sidebar from "../../components/Layout/Sidebar"
+import Tabledetailes from "../../components/Table/Tabledetailes"
 
-import Header from "../components/user/Heeader/Header"
+import Header from "../../components/user/Heeader/Header"
+
 
 
 function Tablemanagementpage() {
